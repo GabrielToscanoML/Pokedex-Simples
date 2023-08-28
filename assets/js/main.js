@@ -6,9 +6,10 @@ const URL = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 const pokemonList = document.getElementById("pokemonList");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
+
 function convertPokemonToLi (pokemon) {
     return `
-        <li class="pokemon  ${pokemon.type}">
+        <li class="pokemon  ${pokemon.type}" data-id="${pokemon.order}">
             <span class="number">#${pokemon.order}</span>
             <span class="name">${pokemon.name}</span>
             <div class="detail">
@@ -21,11 +22,19 @@ function convertPokemonToLi (pokemon) {
     `
 }
 
+function redirectToDetails (ID) {
+    window.location.href = `pokeDetails.html?id=${ID}`
+}
+
 function loadPokemonsItems(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         const newHTML =  pokemons.map(convertPokemonToLi).join('')
-        // poderia ter feito de forma direta também
         pokemonList.innerHTML += newHTML
+        const pokemonLi = document.querySelectorAll(".pokemon");
+        pokemonLi.forEach((element) => {
+            const pokeID = element.getAttribute("data-id")
+            element.addEventListener("click", () => redirectToDetails(pokeID))
+        })
     })
 }
 
