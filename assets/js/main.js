@@ -7,7 +7,7 @@ const pokemonList = document.getElementById("pokemonList");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 
-function convertPokemonToLi (pokemon) {
+function convertPokemonToLi(pokemon) {
     return `
         <li class="pokemon  ${pokemon.type}" data-id="${pokemon.order}">
             <span class="number">#${pokemon.order}</span>
@@ -22,7 +22,7 @@ function convertPokemonToLi (pokemon) {
     `
 }
 
-function redirectToDetails (ID) {
+function redirectToDetails(ID) {
     window.location.href = `pokeDetails.html?id=${ID}`
 }
 

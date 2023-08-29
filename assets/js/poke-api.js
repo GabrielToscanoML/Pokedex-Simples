@@ -1,17 +1,27 @@
 const pokeApi = {}
 
+function assignPokemonStats (pokemonObj, pokemonStats) {
+    pokemonObj.hp = pokemonStats[0].base_stat;
+    pokemonObj.attack = pokemonStats[1].base_stat;
+    pokemonObj.defense = pokemonStats[2].base_stat;
+    pokemonObj.special_attack = pokemonStats[3].base_stat;
+    pokemonObj.special_defense = pokemonStats[4].base_stat;
+    pokemonObj.speed = pokemonStats[5].base_stat;
+    const attributes = [pokemonObj.hp, pokemonObj.attack, pokemonObj.defense,
+    pokemonObj.special_attack, pokemonObj.special_defense, pokemonObj.speed];
+    pokemonObj.total = attributes.reduce((total, values) => total + values, 0)
+}
+
 function convertePokeApiDetailToPokemonModel (pokeDetail) {
-    const pokemon = new Pokemon();
+    const pokemon = new PokemonDetail();
     pokemon.order = pokeDetail.id
     pokemon.name = pokeDetail.name;
-
     const types = pokeDetail.types.map((typeSlot) => typeSlot.type.name)
-
     const [type] = types;
     pokemon.types = types;
     pokemon.type = type;
     pokemon.image = pokeDetail.sprites.other.dream_world.front_default;
-
+    assignPokemonStats(pokemon, pokeDetail.stats);
     return pokemon;
 }
 
