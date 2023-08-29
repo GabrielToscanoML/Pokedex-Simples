@@ -110,6 +110,10 @@
     height: 70px;
 }
 
+.pokemon:hover {
+    cursor: pointer;
+}
+
 .pagination {
     display: flex;
     flex-direction: row;
