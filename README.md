@@ -1,7 +1,8 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre o Projeto
 
-![image](https://github.com/GabrielToscanoML/PixelsArt/assets/68169956/2162f159-17f7-40f1-9f4c-fb7360f31f92)
+![image](https://github.com/GabrielToscanoML/Pokedex-Simples/assets/68169956/dde3e10d-75fc-45c1-ae93-e1224c9058ca)
+
 
 ### Desenvolvimento
 
